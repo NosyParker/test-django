@@ -29,7 +29,7 @@ class Order(models.Model): #модель - "Заказ"
         )
     
     customer = models.ForeignKey(Customer)
-    status = models.IntegerField(order_status=ORDER_STATUS)
+    status = models.IntegerField(choices=ORDER_STATUS)
     address = models.CharField(max_length=500)
 
 
