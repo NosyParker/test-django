@@ -32,10 +32,13 @@ class Order(models.Model): #модель - "Заказ"
     status = models.IntegerField(choices=ORDER_STATUS)
     address = models.CharField(max_length=500)
 
+    def __str__(self):
+        return str(self.id)
 
 class OrderDetails(models.Model): #модель - "Детализация заказа"
     order = models.ForeignKey(Order)
     meal = models.ForeignKey(Meal)
     quantity = models.IntegerField()
 
-
+    def __str__(self):
+        return str(self.id)
