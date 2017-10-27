@@ -1,0 +1,10 @@
+# Ignore virtual environment
+/virtenv/
+
+# Ignore django files
+*.log
+*.pot
+*.pyc
+food_delivery/__pycache__/
+
+.vscode
