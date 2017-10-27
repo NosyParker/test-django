@@ -7,4 +7,8 @@
 *.pyc
 food_delivery/__pycache__/
 
+#Ignore text editor settings
 .vscode
+
+#Ignore sqlite-files
+*.sqlite3
