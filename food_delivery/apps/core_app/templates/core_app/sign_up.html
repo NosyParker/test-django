@@ -1,0 +1,17 @@
+{% extends 'core_app/signup_signin_base.html' %}
+
+{% block title %} Регистрация в системе {% endblock %}
+
+{% block content %}
+<form method="POST" class="post-form">
+
+  {% csrf_token %}
+
+  {{ user_form }}
+
+  <button type="submit" class="btn btn-pink pull-right">Зарегистрироваться</button>
+</form>
+
+<a href="#">Или зайти в существующий аккаунт?</a>
+
+{% endblock %}

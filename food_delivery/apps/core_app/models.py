@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Meal(models.Model): # модель - "Блюдо"
     meal_name = models.CharField(max_length=140)

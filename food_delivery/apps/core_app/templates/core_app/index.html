@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'core_app/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core_app/css/style.css' %}">
+  
+    <script src="{% static 'core_app/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'core_app/js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+        <nav class="navbar navbar-default navbar-static-top">
+                <div class="container">
+                    <a href="{% url 'system_sign_up' %}" class="btn btn-default">Вход/Регистрация</a>
+                </div>
+              </nav>
+        <div class="container-fluid">
+            {% block main_page %}{% endblock %}
+        </div>
+</body>
+</html>
