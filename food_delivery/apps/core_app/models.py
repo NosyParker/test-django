@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Meal(models.Model): # модель - "Блюдо"
+
+class Meal(models.Model): # модель - "Блюдо/Обед"
     meal_name = models.CharField(max_length=140)
     description = models.CharField(max_length=500)
     cost = models.IntegerField(default=0)
@@ -11,12 +12,15 @@ class Meal(models.Model): # модель - "Блюдо"
 
 
 class Customer(models.Model): #модель - "Заказчик"
-    user_name = models.CharField(max_length=140)
-    phone = models.CharField(max_length=140, blank=True)
-    address = models.CharField(max_length=500, blank=True)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    phone = models.CharField(max_length=140, blank=True, null=True)
+    address = models.CharField(max_length=500, blank=True, null=True)
 
     def __str__(self):
-        return self.user_name
+        return self.user.username
+
+    def save(self, *args, **kwargs):
+        super(Customer, self).save(*args, **kwargs)
 
 
 class Order(models.Model): #модель - "Заказ"
