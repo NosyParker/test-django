@@ -4,4 +4,5 @@ How to:
 3. Создаем виртуальное окружение: python -m venv test-django
 4. Активируем окружение: source test-django/bin/activate
 5. Устанавливаем необходимые пакеты: pip install -r requirements.txt
-6. Запускаем: python manage.py runserver
+6. Делаем миграцию БД: python manage.py migrate
+7. Запускаем: python manage.py runserver
