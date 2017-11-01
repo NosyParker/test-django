@@ -6,8 +6,8 @@
 <form method="POST" class="post-form">
 
   {% csrf_token %}
-
-  {{ user_form }}
+  {{ userform.as_p }}
+  {{ userprofileform.as_p }}
 
   <button type="submit" class="btn btn-pink pull-right">Зарегистрироваться</button>
 </form>
