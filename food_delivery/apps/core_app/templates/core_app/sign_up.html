@@ -12,6 +12,6 @@
   <button type="submit" class="btn btn-pink pull-right">Зарегистрироваться</button>
 </form>
 
-<a href="#">Или зайти в существующий аккаунт?</a>
+<a href="{% url 'core_app:system_sign_in' %}">Или зайти в существующий аккаунт?</a>
 
 {% endblock %}
