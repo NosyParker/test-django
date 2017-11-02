@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from core_app.views import ELoginView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^admin/login/', ELoginView.as_view()),
     url(r'', include('core_app.urls',namespace="core_app")),
+
 ]

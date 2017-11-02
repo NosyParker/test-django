@@ -1,0 +1,23 @@
+from django.utils.http import is_safe_url, urlunquote
+from django.shortcuts import render
+from django.shortcuts import redirect, render_to_response
+from django.http import HttpResponse
+
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[-1].strip()
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+
+
+def get_next_url(request):
+    next = request.META.get('HTTP_REFERER')
+    if next:
+        next = urlunquote(next)
+    if not is_safe_url(url=next, host=request.get_host()):
+        next = '/'
+    return next
