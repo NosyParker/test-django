@@ -9,6 +9,6 @@ food_delivery/__pycache__/
 
 #Ignore text editor settings
 .vscode
-
+.idea/
 #Ignore sqlite-files
 *.sqlite3
