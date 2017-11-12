@@ -7,6 +7,8 @@ class ComplexDinner(models.Model):
     dinner_name = models.CharField(max_length=140, verbose_name="Название")
     cost = models.IntegerField(default=0, verbose_name="Цена")
     description = models.TextField(verbose_name="Описание")
+    dinner_img = models.ImageField(upload_to="dinners_images/", blank=False)
+
 
     def __str__(self):
         return self.dinner_name
@@ -31,7 +33,9 @@ class Meal(models.Model):
     meal_name = models.CharField(max_length=140, verbose_name="Название")
     description = models.TextField(verbose_name="Описание")
     cost = models.IntegerField(default=0, verbose_name="Цена")
-    category = models.CharField(choices=MEAL_CATEGORY)
+    category = models.CharField(choices=MEAL_CATEGORY, max_length=20)
+    meal_img = models.ImageField(upload_to="meals_images/", blank=False)
+
 
     def __str__(self):
         return self.meal_name
@@ -56,6 +60,7 @@ class Customer(models.Model):
         verbose_name = "Заказчик"
         verbose_name_plural = "Заказчики"
 
+
 class Order(models.Model): 
     NEW_ORDER = 1
     WORKING = 2
@@ -75,6 +80,7 @@ class Order(models.Model):
     class Meta:
         verbose_name = "Заказ"
         verbose_name_plural = "Заказы"
+
 
 class OrderDetails(models.Model): 
     order = models.ForeignKey(Order)
