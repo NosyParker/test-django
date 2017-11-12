@@ -16,12 +16,22 @@ class ComplexDinner(models.Model):
         verbose_name_plural = "Обеды"
 
 
-class Meal(models.Model): 
-    dinner = models.ForeignKey(ComplexDinner, verbose_name="Входит в состав обеда")
+class Meal(models.Model):
+    MEAL_CATEGORY = (
+        ("DRINKS", "Напитки"),
+        ("SALADS", "Салаты"),
+        ("SUSHI", "Суши"),
+        ("PIZZA", "Пицца"),
+        ("SNACKS", "Закуски"),
+        ("SOUPS", "Супы"),
+        ("MAIN_DISHES", "Вторые блюда"),
+        ("DESSERTS", "Десерты"),
+    )
+    dinner = models.ForeignKey(ComplexDinner, verbose_name="Входит в состав обеда", blank=True)
     meal_name = models.CharField(max_length=140, verbose_name="Название")
     description = models.TextField(verbose_name="Описание")
     cost = models.IntegerField(default=0, verbose_name="Цена")
- 
+    category = models.CharField(choices=MEAL_CATEGORY)
 
     def __str__(self):
         return self.meal_name
