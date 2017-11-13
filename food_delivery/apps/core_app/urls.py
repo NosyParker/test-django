@@ -2,11 +2,15 @@ from django.conf.urls import url
 from . import views
 from django.contrib.auth import views as auth_views
 
-
 app_name = 'core_app'
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
-    url(r'^sign-up/$', views.system_sign_up, name='system_sign_up'),
-    url(r'^sign-in/$', views.ELoginView.as_view(), name='system_sign_in'),
-    url(r'^logout/$', auth_views.logout, {'template_name': 'core_app/logged_out.html'}, name='system_logout'),
+     url(r'^$', views.home, name='home'),
+     url(r'^sign-in/', auth_views.login, 
+        {"template_name":"core_app/sign_in.html"},
+        name = "sign-in"),
+     url(r'^sign-up/', views.sign_up,
+        name = "sign-up"),
+     url(r'^logout/', auth_views.logout, 
+        {"next_page":"/"},
+        name = "logout"),
 ]
