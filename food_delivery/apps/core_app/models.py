@@ -53,9 +53,6 @@ class Customer(models.Model):
     def __str__(self):
         return self.user.username
 
-    def save(self, *args, **kwargs):
-        super(Customer, self).save(*args, **kwargs)
-
     class Meta:
         verbose_name = "Заказчик"
         verbose_name_plural = "Заказчики"
