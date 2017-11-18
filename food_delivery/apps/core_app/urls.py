@@ -14,5 +14,7 @@ urlpatterns = [
         {"next_page":"/"},
         name = "logout"),
      url (r'^account/$', views.account, name="account"),
+     url (r'^account/change-password/$', auth_views.password_change,
+        {"post_change_redirect":"core_app/account.html"}, name="change-password")
 
 ]
