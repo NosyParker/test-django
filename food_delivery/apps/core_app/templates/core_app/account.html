@@ -1,0 +1,15 @@
+{% extends "core_app/base.html" %}
+{% load bootstrap3 %}
+{% block title %} Настройки личного кабинета {% endblock title %}
+
+{%block header%} Здесь хэдер {%endblock header%}
+
+{% block content%}
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form user_profile_form %}
+        {% bootstrap_form customer_profile_form %}
+        <button type="submit" class="btn btn-submit-red">Обновить данные</button>
+    </form>
+    <a href="{% url 'core_app:change-password' %}">Сменить пароль</a>
+{% endblock content%}
