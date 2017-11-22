@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from core_app.forms import UserRegistrationForm, UserUpdateProfileForm, CustomerUpdateProfileForm
 from core_app.models import Customer
+
 import django.contrib.messages
 
 def home(request):
@@ -43,8 +44,8 @@ def logout_required(view):
 @transaction.atomic
 def account(request):
     if request.method == "POST":
-        user_profile_form = UserUpdateProfileForm(request.POST,instance=request.user)
-        customer_profile_form = CustomerUpdateProfileForm(request.POST,instance=request.user.customer)
+        user_profile_form = UserUpdateProfileForm(request.POST, instance=request.user)
+        customer_profile_form = CustomerUpdateProfileForm(request.POST, instance=request.user.customer)
         if user_profile_form.is_valid() and customer_profile_form.is_valid():
             user_profile_form.save()
             customer_profile_form.save()
