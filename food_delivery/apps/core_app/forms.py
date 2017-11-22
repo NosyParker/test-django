@@ -7,7 +7,7 @@ GLOBAL_EMAIL_LENGTH = 100
 
 class UserRegistrationForm(forms.ModelForm):
     email = forms.CharField(max_length=GLOBAL_EMAIL_LENGTH, required=True)
-    password=forms.CharField(label="Пароль", widget=forms.PasswordInput(), required=True)
+    password=forms.CharField(min_length = 8, label="Пароль", widget=forms.PasswordInput(), required=True)
     confirm_password=forms.CharField(label="Повторите пароль", widget=forms.PasswordInput(), required=True)
 
     def clean(self):
