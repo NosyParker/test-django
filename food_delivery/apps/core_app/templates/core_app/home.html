@@ -13,11 +13,19 @@
             Авторизованы как: {{ user.username }}
           </p> 
         </li>
-        <li>
-          <a href="{% url 'core_app:account'%}">
-            Личный кабинет
-          </a>
-        </li>
+           {% if user.is_superuser %}
+          <li>
+            <a href="{% url 'admin:index' %}">
+                Перейти в админ-панель
+            </a>
+          </li>
+            {% else %}
+            <li>
+                <a href="{% url 'core_app:account'%}">
+                  Личный кабинет
+                </a>
+              </li>
+            {% endif %}
         <li>
             <a href="{% url 'core_app:logout' %}">
               Выход
