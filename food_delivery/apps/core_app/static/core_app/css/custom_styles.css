@@ -1,0 +1,42 @@
+ header {
+    background: #02356c;
+    height: 96px;
+    display: table;
+    width: 100%;
+} 
+
+.header-content {
+color: #ffffff;
+font: bold 15px/15px Tahoma,  sans-serif;
+text-transform: uppercase;
+letter-spacing: 1px;
+display: block;
+position: relative;
+}
+
+.auth-bg {
+    background-color: #02356c;
+}
+
+.btn-submit-red {
+    color:white;
+    background-color: rgb(228, 9, 31)
+}
+
+.btn-submit-red:focus,
+.btn-submit-red:hover {
+    color:white;
+    background-color: rgb(143, 33, 46);
+}
+
+
+.centered-form .panel{
+	background: white;
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    padding: 20px; 
+}
