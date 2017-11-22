@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-
+from django.utils.html import format_html
 
 class ComplexDinner(models.Model):
     dinner_name = models.CharField(max_length=140, verbose_name="Название")
@@ -21,7 +21,7 @@ class Meal(models.Model):
     MEAL_CATEGORY = (
         ("DRINKS", "Напитки"),
         ("SALADS", "Салаты"),
-        ("SUSHI", "Суши"),
+        ("SUSHI", "Суши/Роллы"),
         ("PIZZA", "Пицца"),
         ("SNACKS", "Закуски"),
         ("SOUPS", "Супы"),
@@ -38,6 +38,15 @@ class Meal(models.Model):
 
     def __str__(self):
         return self.meal_name
+
+    def meal_image_thumbnail(self):
+        if self.meal_img:
+            return format_html('<img src="{}" width="100" height="80" />'.format(self.meal_img.url))
+        else:
+            return "Изображение еще не добавлено"
+
+    meal_image_thumbnail.allow_tags = True
+    meal_image_thumbnail.short_description = 'Изображение'
 
     class Meta:
         verbose_name = "Блюдо"
