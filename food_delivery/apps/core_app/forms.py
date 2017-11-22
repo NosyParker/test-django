@@ -1,11 +1,12 @@
 from django import forms
-
 from django.contrib.auth.models import User
 from core_app.models import Customer, Meal
 
 
+GLOBAL_EMAIL_LENGTH = 100
+
 class UserRegistrationForm(forms.ModelForm):
-    email = forms.CharField(max_length=100, required=True)
+    email = forms.CharField(max_length=GLOBAL_EMAIL_LENGTH, required=True)
     password=forms.CharField(label="Пароль", widget=forms.PasswordInput(), required=True)
     confirm_password=forms.CharField(label="Повторите пароль", widget=forms.PasswordInput(), required=True)
 
@@ -23,8 +24,6 @@ class UserRegistrationForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ("username", "email", "password")
-        #exclude=["last_login", "user_permissions","is_staff","is_active","date_joined","groups","is_superuser"]
-    
 
 class UserUpdateProfileForm(forms.ModelForm):
     class Meta:

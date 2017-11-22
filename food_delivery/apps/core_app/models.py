@@ -3,9 +3,14 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.html import format_html
 
+
+GLOBAL_NAME_LENGTH = 140
+GLOBAL_ADDRESS_LENGTH = 500
+
+
 class ComplexDinner(models.Model):
-    dinner_name = models.CharField(max_length=140, verbose_name="Название")
-    cost = models.IntegerField(default=0, verbose_name="Цена")
+    dinner_name = models.CharField(max_length=GLOBAL_NAME_LENGTH, verbose_name="Название")
+    cost = models.IntegerField(default = 0, verbose_name="Цена")
     description = models.TextField(verbose_name="Описание")
     dinner_img = models.ImageField(upload_to="dinners_images/", verbose_name="Изображение", blank=False)
 
@@ -29,7 +34,7 @@ class Meal(models.Model):
         ("DESSERTS", "Десерты"),
     )
     dinner = models.ForeignKey(ComplexDinner, verbose_name="Входит в состав обеда", blank=True, null=True)
-    meal_name = models.CharField(max_length=140, verbose_name="Название")
+    meal_name = models.CharField(max_length=GLOBAL_NAME_LENGTH, verbose_name="Название")
     description = models.TextField(verbose_name="Описание")
     cost = models.IntegerField(default=0, verbose_name="Цена")
     category = models.CharField(choices=MEAL_CATEGORY, max_length=20, verbose_name="Категория")
@@ -55,8 +60,8 @@ class Meal(models.Model):
 
 class Customer(models.Model): 
     user = models.OneToOneField(User, verbose_name="Пользователь", on_delete=models.CASCADE)
-    phone = models.CharField(max_length=140, verbose_name="Телефон", blank=True, null=True)
-    address = models.CharField(max_length=500, verbose_name="Адрес", blank=True, null=True)
+    phone = models.CharField(max_length=GLOBAL_NAME_LENGTH, verbose_name="Телефон", blank=True, null=True)
+    address = models.CharField(max_length=GLOBAL_ADDRESS_LENGTH, verbose_name="Адрес", blank=True, null=True)
 
     def __str__(self):
         return self.user.username
@@ -77,7 +82,7 @@ class Order(models.Model):
     
     customer = models.ForeignKey(Customer, verbose_name="Заказчик")
     status = models.IntegerField(choices=ORDER_STATUS, verbose_name="Статус заказа")
-    address = models.CharField(max_length=500, verbose_name="Адрес")
+    address = models.CharField(max_length=GLOBAL_ADDRESS_LENGTH, verbose_name="Адрес")
     created_at_time = models.DateTimeField(default = timezone.now, verbose_name="Время заказа")
     delivered_at_time = models.DateTimeField(blank = True, null = True, verbose_name="Время доставки")
 
