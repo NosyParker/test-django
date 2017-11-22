@@ -1,6 +1,9 @@
 from django.conf.urls import url
 from . import views
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
+ 
 
 app_name = 'core_app'
 urlpatterns = [
@@ -18,4 +21,4 @@ urlpatterns = [
         {"post_change_redirect": "core_app:password_change_done","template_name":"core_app/change_password.html"}, name="change-password"),
      url (r'^account/change-password/done/$', auth_views.password_change_done,
         {"template_name":"core_app/password_change_done.html"}, name="password_change_done"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
