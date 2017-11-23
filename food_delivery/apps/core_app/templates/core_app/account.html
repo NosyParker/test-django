@@ -5,11 +5,12 @@
 {%block header%} Здесь хэдер {%endblock header%}
 
 {% block content%}
-    <form method="post">
+    <form method="post" class="change-userform">
         {% csrf_token %}
         {% bootstrap_form user_profile_form %}
         {% bootstrap_form customer_profile_form %}
         <button type="submit" class="btn btn-submit-red">Обновить данные</button>
+        <a href="{% url 'core_app:change-password' %}">Сменить пароль</a>
     </form>
-    <a href="{% url 'core_app:change-password' %}">Сменить пароль</a>
+    
 {% endblock content%}

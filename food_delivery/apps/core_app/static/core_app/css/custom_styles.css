@@ -1,6 +1,6 @@
  header {
-    background: #02356c;
-    height: 96px;
+    background: hsl(211, 96%, 22%);
+    
     display: table;
     width: 100%;
 } 
@@ -12,6 +12,7 @@ text-transform: uppercase;
 letter-spacing: 1px;
 display: block;
 position: relative;
+padding: 5px;
 }
 
 .auth-bg {
@@ -38,5 +39,20 @@ position: relative;
     left: 50%;
     transform: translate(-50%, -50%);
     display: block;
-    padding: 20px; 
+    padding: 20px;
+    width:35%; 
+    
+}  
+.container-main{
+   padding:10px;
+   
+   
+}
+.nav-panel li{
+    display: inline;
+    margin-right:10px;
+}
+.change-userform{
+    width:35%;
+    margin:0 auto;
 }

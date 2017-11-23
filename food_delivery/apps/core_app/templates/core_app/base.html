@@ -13,8 +13,10 @@
     <header> 
         {% block header %}  {% endblock header %} 
     </header>
-    <main>
+    <main class="container-main">
+        
         {% block content %}  {% endblock content %}
+        
     </main>
     <script src="{% static 'core_app/js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'core_app/js/bootstrap.min.js' %}"></script>

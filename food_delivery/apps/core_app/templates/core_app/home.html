@@ -7,12 +7,8 @@
     <div class="header-content">
       {%  if user.is_authenticated %}
       <h1>Главная</h1> 
-      <ul>
-        <li>
-          <p> 
-            Авторизованы как: {{ user.username }}
-          </p> 
-        </li>
+      <ul class="nav-panel">
+        <li>Авторизованы как: {{ user.username }}</li>
            {% if user.is_superuser %}
           <li>
             <a href="{% url 'admin:index' %}">
@@ -33,7 +29,7 @@
         </li>
       </ul>    
       {% else %}
-      <ul>
+      <ul class="nav-panel">
         <li>
           <a href="{% url 'core_app:sign-up' %}">Регистрация</a>
         </li>
