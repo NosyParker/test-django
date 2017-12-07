@@ -3,15 +3,15 @@ from . import views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
- 
+
 
 app_name = 'core_app'
 urlpatterns = [
-     url (r'^$', views.home, name='home'),
+     url (r'^$', views.HomeView.as_view(), name='home'),
      url (r'^sign-in/', views.logout_required(auth_views.login), 
         {"template_name":"core_app/sign_in.html"},
         name = "sign-in"),
-     url (r'^sign-up/', views.logout_required(views.sign_up),
+     url (r'^sign-up/', views.logout_required(views.SignUpView.as_view()),
         name = "sign-up"),
      url (r'^logout/', auth_views.logout, 
         {"next_page":"/"},
