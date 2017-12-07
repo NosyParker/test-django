@@ -29,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'nosyparker.pythonanywhere.com',
+    'localhost',
 ]
 
 
@@ -43,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap3',
     'core_app',
+    'easycart',
+    'cart',
+
 ]
 
 MIDDLEWARE = [
@@ -69,6 +73,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'easycart.context_processors.cart',
             ],
         },
     },
@@ -126,9 +131,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGIN_URL = '/sign-in/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+ADMIN_STAFF_REDIRECT_URL = '/admin'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 
+EASYCART_CART_CLASS = 'cart.views.Cart'
